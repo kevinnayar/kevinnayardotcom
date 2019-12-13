@@ -1,0 +1,204 @@
+@import url("../css/reset.css");
+
+:root {
+  --colorBeige: #D0A78A;
+
+  --colorWhite: #FFFFFF;
+  --colorGrayLight: #F6F7F5;
+  --colorGrayMid: #999;
+  --colorGrayDark: #676767;
+  --colorBlack: #565677;
+
+  --fontSerif: 'Playfair Display', 'Times New Roman', Times, Georgia, serif;
+  --fontSansSerif: 'Montserrat', Helvetica, Arial, sans-serif;
+  --cubicBezier: cubic-bezier(.694,0,.335,1);
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  font-size: 62.5%;
+  margin: 0 auto;
+  padding: 0;
+  font-family: var(--fontSerif);
+  -webkit-font-smoothing: antialiased;
+  color: var(--colorBlack);
+}
+
+.header {
+  text-align: center;
+}
+.header h1 {
+  font-size: 4.6em;
+  margin: 50px auto;
+  opacity: 0;
+  animation: fadeIn .25s var(--cubicBezier) .25s forwards;
+}
+
+.hero {
+  width: 100%;
+  position: relative;
+}
+.hero .images {
+  display: flex;
+  overflow: hidden;
+  height: 33.33vw;
+  background: var(--colorGrayLight);
+}
+.hero .images img {
+  width: 25%;
+  opacity: 0;
+  animation: fadeUp .5s var(--cubicBezier) .33s forwards;
+}
+.hero .images img:nth-child(1) {
+  animation-delay: 0s
+}
+.hero .images img:nth-child(2) {
+  animation-delay: .33s
+}
+.hero .images img:nth-child(3) {
+  animation-delay: .67s
+}
+.hero .images img:nth-child(4) {
+  animation-delay: 1s
+}
+.content {
+  opacity: 0;
+  animation: fadeIn .2s var(--cubicBezier) .2s forwards;
+  text-align: center;
+  margin: 0 auto;
+  padding: 50px 0;
+  z-index: 1;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+}
+.content p {
+  font-family: var(--fontSansSerif);
+  font-size: 2em;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  width: 500px;
+  margin: 0 auto;
+  color: var(--colorGrayMid);
+}
+.content p.para-top {
+  border-bottom: 2px solid var(--colorGrayLight);
+  padding-bottom: 25px;
+  opacity: 0;
+  animation: fadeUp .2s var(--cubicBezier) .4s forwards;
+}
+.content h2 {
+  font-family: var(--fontSansSerif);
+  font-size: 2.4em;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 40px auto;
+  opacity: 0;
+  animation: fadeUp .2s var(--cubicBezier) .6s forwards;
+}
+.content h3 {
+  font-family: var(--fontSerif);
+  font-size: 3em;
+  opacity: 0;
+  animation: fadeUp .2s var(--cubicBezier) .6s forwards;
+}
+.content p.para-bottom {
+  border-top: 2px solid var(--colorGrayLight);
+  padding-top: 25px;
+  opacity: 0;
+  animation: fadeUp .2s var(--cubicBezier) .8s forwards;
+}
+.content p.para-last {
+  padding-top: 15px;
+  opacity: 0;
+  animation: fadeUp .2s var(--cubicBezier) .8s forwards;
+}
+
+.footer {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  padding-bottom: 30px;
+  z-index: -1;
+}
+.footer .images {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  height: 12.49875vw;
+  background: var(--colorGrayLight);
+}
+.footer .images img {
+  width: 16.665%;
+  opacity: 0;
+  animation: fadeUp .5s var(--cubicBezier) .33s forwards;
+}
+.footer .images img:nth-child(1) {
+  animation-delay: 0s
+}
+.footer .images img:nth-child(2) {
+  animation-delay: .33s
+}
+.footer .images img:nth-child(3) {
+  animation-delay: .67s
+}
+.footer .images img:nth-child(4) {
+  animation-delay: 1s
+}
+.footer .images img:nth-child(5) {
+  animation-delay: 1.33s
+}
+.footer .images img:nth-child(6) {
+  animation-delay: 1.67s
+}
+.footer .text {
+  margin: 40px auto 0;
+}
+.footer .text p {
+  font-family: var(--fontSansSerif);
+  font-size: 1.2em;
+  letter-spacing: 2px;
+  color: var(--colorGrayMid);
+  margin: 0 15% 10px;
+  line-height: 1.6;
+}
+
+
+@keyframes fadeIn {
+  0%    { opacity: 0; }
+  100%  { opacity: 1; }
+}
+@keyframes fadeUp {
+  0%    { transform: translateY(50px);  opacity: 0; }
+  100%  { transform: translateY(0);     opacity: 1; }
+}
+
+@media only screen and (max-width: 500px) {
+  .hero .images {
+    height: 66.67vw;
+  }
+  .hero .images img {
+    width: 50%;
+    opacity: 0;
+  }
+  .header h1 {
+    font-size: 2.8em;
+    margin: 30px auto;
+  }
+  .content p {
+    font-size: 1.2em;
+    width: 300px;
+  }
+  .content h2 {
+    margin: 25px auto;
+  }
+  .footer .images {
+    height: 49.995vw;
+  }
+  .footer .images img {
+    width: 33.33%;
+    height: 50%;
+  }
+}

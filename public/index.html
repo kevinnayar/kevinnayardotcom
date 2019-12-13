@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>⭐ Kevin Nayar</title>
+    <meta name="description" content="Kevin Nayar" />
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto|Material+Icons" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/dist/src.50e43b9f.css" />
+  </head>
+
+  <body data-page-id="index">
+    <!-- header -->
+    <header id="header">
+      <img src="images/avatar.png" src="Kevin Nayar" />
+      <h1>Kevin Nayar</h1>
+      <h2>Software Engineer</h2>
+    </header>
+
+    <!-- content -->
+    <div id="content">
+      <p>
+        Hello, there.
+      </p>
+      <p>
+        I'm a software engineer and a proud father to an Australian Kelpie named Jpeg. 
+        Professionally, I've worn many hats such as developer, technical architect,
+         project manager, and manager. At my last few gigs, I managed technical teams 
+         at companies like <a href="https://www.dropbox.com/" class="outbound-link">Dropbox</a> 
+         and <a href="https://www.spredfast.com/" class="outbound-link">Spredfast</a> in Austin, TX.
+      </p>
+      <p>
+        Currently, I'm a software engineer working on something pretty special at a 
+        small startup called <a href="https://www.altavozclinical.com/" class="outbound-link">Altavoz</a> 
+        (recently acquired by <a href="https://www.iqvia.com/" class="outbound-link">IQVIA</a>). 
+        I'm passionate about Javascript (especially React + Redux and Node.js), data, 
+        clean code, and creating rich user experiences.
+      </p>
+      <p>
+        Outside of the 9 to 5, you can catch me 
+        hosting <a href="http://whiskypick.com" class="outbound-link">whiskey tasting events</a>, 
+        going on a run around Town Lake with my beautiful <strike>girlfriend</strike> <strike>fiancé</strike> 
+        wife, or manipulating and visualizing <a href="https://data.world/kevinnayar" class="outbound-link">datasets</a>. 
+        From time to time, I like to work on special freelance projects. 
+        If you'd like to work with me, give me a shout.
+      </p>
+
+      <ul id="social-nav">
+        <li><a class="outbound-link" href="mailto:&#107;&#101;&#118;&#105;&#110;&#046;&#110;&#097;&#121;&#097;&#114;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">Email</a></li>
+        <li><a class="outbound-link" href="http://github.com/kevinnayar">Github</a></li>
+        <li><a class="outbound-link" href="http://linkedin.com/in/kevinnayar">LinkedIn</a></li>
+        <li><a class="outbound-link" href="http://instagram.com/kevinnayar">Instagram</a></li>
+      </ul>
+    </div>
+
+    <!-- intro -->
+    <div id="intro">
+      <div id="intro-inner">
+        <p>
+          Since most of my work tends to be hidden behind private repos, it's not easy for me 
+          to have a traditional engineering portfolio. Instead, as an avid hiker, I decided 
+          to build a showcase of some of my favorites hikes over the last few years. Here 
+          they are visualized using React + Typescript + SVG + CSS animations with no external 
+          libraries. This concept was inspired by a friend and fellow developer, 
+          <a class="outbound-link" href="https://mountaindrawn.com/">Patrick Lewis</a>.
+        </p>
+      </div>
+    </div>
+
+    <!-- polygons -->
+    <div id="polygons"></div>
+    <script src="/dist/src.97419023.js"></script>
+
+    <!-- footer -->
+    <div id="footer">
+      <p>&copy; Kevin Nayar</p>
+    </div>
+
+    <script>
+      var links = document.getElementsByClassName('outbound-link');
+      for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener('click', openInTab, false);
+      }
+      function openInTab(e) {
+        e.preventDefault();
+        window.open(e.target.href);
+      }
+    </script>
+  </body>
+</html>
