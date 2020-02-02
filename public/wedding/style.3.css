@@ -275,7 +275,32 @@ body {
   position: relative;
 }
 #registry p {
-  padding-top: 0;
+  padding: 0 0 40px;
+}
+#registry .registry-link {
+  padding: 0 0 100px;
+}
+#registry a {
+  width: 160px;
+  display: block;
+  padding: 0 10px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: var(--fontSansSerif);
+  text-transform: uppercase;
+  color: var(--colorGreen);
+  border: 1px solid var(--colorGreen);
+  border-radius: 4px;
+  text-decoration: none;
+  margin: 0 auto;
+  transition: all 0.2s var(--cubicBezier);
+}
+#registry a:hover {
+  border-color: var(--colorGreen);
+  background: var(--colorGreen);
+  color: var(--colorBeige);
 }
 #registry .floral-5 {
   position: absolute;
