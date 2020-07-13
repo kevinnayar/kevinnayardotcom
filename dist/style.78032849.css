@@ -1,0 +1,327 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+:root {
+  --colorRed: #B3435E;
+  --colorBlue: #5D83B6;
+  --colorWhite: #FFFFFF;
+  --colorLightGray: #F6F7F5;
+  --colorDarkGray: #747880;
+  --colorBlack: #121212;
+  --fontPrimary: 'Montserrat', Helvetica, Arial, sans-serif;
+  --cubicBezier: cubic-bezier(.694,0,.335,1);
+}
+
+@keyframes fadeUp {
+  0%    { transform: translateY(50px);  opacity: 0; }
+  100%  { transform: translateY(0);     opacity: 1; }
+}
+@keyframes fadeIn {
+  0%    { opacity: 0; }
+  100%  { opacity: 1; }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  font-size: 62.5%;
+  margin: 0 auto;
+  padding: 0;
+  font-family: var(--fontPrimary);
+  -webkit-font-smoothing: antialiased;
+  color: var(--colorWhite);
+  display: flex;
+  flex-wrap: wrap;
+}
+#intro,
+#polygons,
+#footer {
+  box-sizing: border-box;
+  width: 100%;
+  flex-basis: 100%;
+}
+
+/* header */
+#header {
+  flex-basis: 33%;
+  box-sizing: border-box;
+  background: linear-gradient(var(--colorRed), var(--colorBlue));
+  margin: 6%;
+  padding: 5%;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  z-index: 1;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeUp .2s var(--cubicBezier) .2s forwards;
+}
+#header img {
+  border-radius: 50%;
+  width: 120px;
+  margin: 2% auto;
+  opacity: 0;
+  animation: fadeUp .2s var(--cubicBezier) .4s forwards;
+}
+#header h1 {
+  font-weight: 700;
+  font-size: 9em;
+  margin-bottom: 7%;
+  opacity: 0;
+  animation: fadeUp .2s var(--cubicBezier) .6s forwards;
+}
+#header h2 {
+  font-size: 2.5em;
+  margin-bottom: 7%;
+  opacity: 0;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  animation: fadeUp .2s var(--cubicBezier) .8s forwards;
+}
+
+/* content */
+#content {
+  flex-basis: 65%;
+  box-sizing: border-box;
+  background: var(--colorWhite);
+  color: var(--colorBlack);
+  margin-left: -10%;
+  padding: 6% 6% 6% 9%;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+}
+#content p, #content ul {
+  opacity: 0;
+  animation: fadeIn .6s var(--cubicBezier) .6s forwards;
+}
+
+/* intro */
+#intro {
+  padding: 5% 10%;
+  box-sizing: border-box;
+  background: var(--colorWhite);
+  text-align: center;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+}
+#intro #intro-inner {
+  padding: 8% 12%;
+  color: var(--colorWhite);
+  background: linear-gradient(160deg, var(--colorRed), var(--colorBlue));
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+/* polygons */
+#polygons {
+  min-height: 100px;
+  box-sizing: border-box;
+  background: var(--colorWhite);
+}
+
+/* footer */
+#footer {
+  padding: 2.5% 10%;
+  box-sizing: border-box;
+  background: linear-gradient(205deg, var(--colorRed), var(--colorBlue));
+  color: var(--colorWhite);
+  text-align: center;
+}
+
+
+
+#content p {
+  font-size: 1.9em;
+  line-height: 2;
+  margin-bottom: 5%;
+}
+#content p span {
+  font-size: 120%;
+}
+#content a {
+  color: var(--colorRed);
+  text-decoration: none;
+  background: transparent;
+  transition: all .2s var(--cubicBezier);
+}
+#content a:hover {
+  background: var(--colorLightGray);
+}
+
+#content ul {
+  display: flex;
+}
+#content ul li {
+  font-size: 1.6em;
+  line-height: 2;
+  margin: 0 20px 0 0;
+}
+#content ul li a {
+  margin: 0;
+}
+
+#intro p {
+  font-size: 2.2em;
+  line-height: 2;
+  color: var(--colorLightGray);
+}
+#intro p a {
+  color: var(--colorWhite);
+  font-weight: bold;
+  text-decoration: none;
+  transition: all .2s var(--cubicBezier);
+}
+#intro p a:hover {
+  opacity: 0.8;
+}
+#footer p {
+  font-size: 1.6em;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 1300px) {
+  #header img {
+    width: 100px;
+  }
+  #header h1 {
+    font-size: 7em;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  body {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    background: var(--colorWhite);
+  }
+  #header,
+  #content,
+  #intro,
+  #polygons,
+  #footer {
+    width: 100%;
+    flex-basis: unset;
+  }
+  #intro,
+  #footer {
+    padding: 5%;
+  }
+  #header {
+    background: linear-gradient(45deg, var(--colorRed), var(--colorBlue));
+    margin: 0;
+  }
+  #header img {
+    width: 80px;
+  }
+  #header h1 {
+    font-size: 4em;
+    margin-bottom: 3%;
+    margin-top: 0;
+  }
+  #header h2 {
+    margin-bottom: 0;
+    letter-spacing: 6px;
+  }
+  #content {
+    margin: 0;
+    padding: 9%;
+  }
+  #content p {
+    font-size: 1.7em;
+    margin-bottom: 6%;
+    line-height: 1.7;
+  }
+  #content ul {
+    overflow: hidden;
+    margin-bottom: 5%;
+  }
+  #content ul li {
+    font-size: 1.5em;
+    margin: 0 12px 0 0;
+  }
+  #intro {
+    padding: 0;
+    box-shadow: none;
+  }
+  #intro #intro-inner {
+    padding: 8% 8% 70px;
+  }
+  #intro p {
+    font-size: 2em;
+  }
+  #polygons .nav {
+    width: 100%;
+    top: 0;
+  }
+  #polygons .nav .nav-prev {
+    top: 90px;
+    position: absolute;
+  }
+  #polygons .nav .nav-next {
+    top: 90px;
+    right: 0;
+    position: absolute;
+  }
+  #footer p {
+    font-size: 1.3em;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #header h2,
+  #content p,
+  #intro p {
+    font-size: 1.3em;
+  }
+  #content ul li,
+  #footer p {
+    font-size: 1.1em;
+  }
+}
+
+/*# sourceMappingURL=/style.78032849.css.map */

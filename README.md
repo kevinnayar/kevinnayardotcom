@@ -1,2 +1,5 @@
 # kevinnayardotcom
-https://flaviocopes.com/firebase-hosting/
+
+it me kaynay hey hey 👋
+
+[kevinnayar.com](kevinnayar.com)
