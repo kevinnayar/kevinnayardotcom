@@ -27,11 +27,6 @@
       <h2>Software Engineer</h2>
     </header>
 
-    <!-- nav -->
-    <nav id="nav">
-
-    </nav>
-
     <!-- bio -->
     <div id="bio" class="section">
       <div class="content">
@@ -47,7 +42,7 @@
           Currently, I'm a senior software engineer working on something pretty special at a 
           startup called <a href="https://www.altavozclinical.com/" class="outbound-link">Altavoz</a>.
           We're focused in the clinical trial space and were recently acquired by <a href="https://www.iqvia.com/" class="outbound-link">IQVIA</a>.
-          I like writing functional Javascript. Here is some of the tech that I'm working and playing with these days:
+          I like writing functional fullstack Javascript. Here is some of the tech that I'm working and playing with these days:
         </p>
         <div class="code-list">
           <p>React</p>        <p>Typescript</p>     <p>AWS</p>        <p>Redis</p>
@@ -56,7 +51,7 @@
           
           <p>Redux</p>        <p>Postgres/MySQL</p> <p>Nextjs</p>     <p>RabbitMQ</p>
 
-          <p>Nodejs</p>       <p>NoSQL</p>          <p>Gatsby</p>     <p>Jest</p>
+          <p>Nodejs</p>       <p>NoSQL</p>          <p>Golang</p>     <p>Jest</p>
         </div>
         <p>
           Outside of the 9 to 5, you can catch me 
@@ -75,25 +70,30 @@
           I like building things for work and for fun.
         </p>
         <div class="project-list">
-          <div class="item">
+          <a class="item" href="https://whiskypick.com" target="_blank">
             <h3>whiskypick</h3>
             <img src="https://whiskypick.com/caol-ila-islay-single-malt.a4100c03.jpg" alt="WhiskyPick">
-            <p>Ratings website for a whisky club that I run with my friends in Austin, Texas.</p>
-          </div>
-          <div class="item">
-            <h3>klutch</h3>
-            <img src="https://whiskypick.com/caol-ila-islay-single-malt.a4100c03.jpg" alt="WhiskyPick">
-          </div>
-          <div class="item">
-            <h3>national perks</h3>
-            <img src="https://whiskypick.com/caol-ila-islay-single-malt.a4100c03.jpg" alt="WhiskyPick">
-          </div>
+            <p>A collection of ratings for whiskies that we've tasted in our local whisky club in Austin, Texas</p>
+            <div class="tags"><span>React/Redux</span><span>Firestore</span></div>
+          </a>
+          <a class="item" href="https://github.com/kevinnayar/temporis#readme" target="_blank">
+            <h3>temporis</h3>
+            <img src="/temporis.df1d715d.png" alt="Temporis">
+            <p>An open-source node module to capture app state and implement redo/undo in Javascript contexts</p>
+            <div class="tags"><span>Typescript</span><span>NPM</span></div>
+          </a>
+          <a class="item" href="https://github.com/kevinnayar/aggregarian" target="_blank">
+            <h3>aggregarian</h3>
+            <img src="/aggregarian.f3c6df44.png" alt="Aggregarian">
+            <p>A Raspberry pi powered server sending soil moisture sensor data from plants to the cloud in realtime</p>
+            <div class="tags"><span>Go</span><span>Raspberry Pi</span></div>
+          </a>
         </div>
       </div>
     </div>
 
     <!-- polygons -->
-    <iframe id="hobbies" src="/polygons/index.html" name="polygons" scroll="none" frameborder="0" style="width: 100%; height: 760px; overflow: hidden;"></iframe>
+    <!-- <iframe id="hobbies" src="polygons/index.html" name="polygons" scroll="none" frameborder="0" style="width: 100%; height: 760px; overflow: hidden;"></iframe> -->
     
     <!-- contact -->
     <div id="contact" class="section">
@@ -112,7 +112,7 @@
 
     <!-- footer -->
     <div id="footer">
-      <p>&copy; Kevin Nayar 2020</p>
+      <p>&copy; Kevin Nayar</p>
     </div>
 
     <script>var links = document.getElementsByClassName('outbound-link');
@@ -124,7 +124,11 @@ for (var i = 0; i < links.length; i++) {
 function openInTab(e) {
   e.preventDefault();
   window.open(e.target.href);
-}</script>
+}
+
+var footer = document.getElementById('footer');
+var d = new Date();
+footer.innerHTML = "<p>&copy; Kevin Nayar ".concat(d.getFullYear(), "</p>");</script>
   </body>
 </html>
 
