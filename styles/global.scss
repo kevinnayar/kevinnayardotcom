@@ -272,12 +272,12 @@ a {
     flex: 1;
     opacity: 0.1;
 
-    &.tech {
+    &.eng {
       background: var(--color-blue);
       border-radius: var(--pad-xs) var(--pad-xs) 0 0;
     }
 
-    &.biz {
+    &.mgmt {
       background: var(--color-pink);
       border-radius: 0 0 var(--pad-xs) var(--pad-xs);
     }
@@ -325,14 +325,18 @@ a {
     right: calc(var(--pad-sm) / 2);
     margin: 0;
     font-size: 0.75rem;
+    background: var(--color-dark-dk);
+    padding: 0 var(--pad-xs);
+    border-radius: var(--pad-xxs);
+    z-index: 1;
 
-    &.tech {
-      top: calc(45% - var(--pad-sm));
+    &.eng {
+      top: calc(42.5% - var(--pad-sm));
       color: var(--color-blue);
     }
 
-    &.biz {
-      bottom: calc(45% - var(--pad-sm));
+    &.mgmt {
+      bottom: calc(42.5% - var(--pad-sm));
       color: var(--color-pink);
     }
   }
@@ -347,7 +351,7 @@ a {
 
   &__item {
     position: absolute;
-    height: calc(var(--chart-height) / 4);
+    height: calc(var(--chart-height) / 2);
     border-radius: var(--pad-xxs);
     transition: var(--base-transition);
 
@@ -356,7 +360,7 @@ a {
       box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
     }
 
-    &.tech {
+    &.eng {
       background: var(--color-blue-alpha);
       border: 1px solid var(--color-blue);
 
@@ -365,7 +369,7 @@ a {
       }
     }
     
-    &.biz {
+    &.mgmt {
       background: var(--color-pink-alpha);
       border: 1px solid var(--color-pink);
 
@@ -392,6 +396,7 @@ a {
     border-radius: var(--pad-xs);
     opacity: 0;
     animation: slideRight .2s cubic-bezier(.694, 0, .335, 1) forwards;
+    z-index: 2;
   }
 
   &__modal-title {

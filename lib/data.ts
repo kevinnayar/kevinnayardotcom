@@ -58,7 +58,7 @@ export const workHistory: WorkHistoryItem[] = [
     description: 'Technical consultant for deployments of Bazaarvoice\'s platform and usage of their APIs/SDK for strategic enterprise customers.',
     beginDate: [9, 2010],
     endDate: [9, 2013],
-    score: 2
+    score: 1
   },
   {
     company: 'Khoros',
@@ -66,7 +66,7 @@ export const workHistory: WorkHistoryItem[] = [
     description: 'Built and managed the global developer advocacy practice within Spredfast to provide best-in-class services to enterprise customers.',
     beginDate: [9, 2013],
     endDate: [8, 2016],
-    score: 3
+    score: 2
   },
   {
     company: 'Khoros',
@@ -74,7 +74,7 @@ export const workHistory: WorkHistoryItem[] = [
     description: 'Led the Technical Solutions group with consultants and engineers responsible for developer advocacy and custom product development.',
     beginDate: [8, 2016],
     endDate: [4, 2018],
-    score: 3
+    score: 2
   },
   {
     company: 'Dropbox',
@@ -82,7 +82,7 @@ export const workHistory: WorkHistoryItem[] = [
     description: 'Led the Technical Architecture team that implemented large scale deployments for enterprise customers and supported them via Dropbox\'s APIs and SDKs.',
     beginDate: [4, 2018],
     endDate: [3, 2019],
-    score: 4
+    score: 2
   },
   {
     company: 'IQVIA',

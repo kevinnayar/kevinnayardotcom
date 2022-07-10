@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, MutableRefObject } from 'react'
+import { useRef, MutableRefObject } from 'react'
 import { NextPage, GetStaticProps } from 'next'
 import { stack, projects, workHistory, contactList } from '../lib/data'
 import Layout from '../components/Layout/Layout'
@@ -28,7 +28,9 @@ export const getStaticProps: GetStaticProps = () => {
     contactList,
   }
 
-  return { props }
+  return {
+    props,
+  }
 }
 
 export default function Index({ stack, projects, workHistory, contactList }: Props) {
@@ -67,38 +69,38 @@ export default function Index({ stack, projects, workHistory, contactList }: Pro
 
   return (
     <main>
-    <Header>
-      <Nav refs={refs} />
-    </Header>
+      <Header>
+        <Nav refs={refs} />
+      </Header>
 
-    <Content>  
-      <Section title="👋 hello there" ref={aboutRef}>
-        <Para>{bio[0]}</Para>
-        <Para>{bio[1]}</Para>
-        <CodeList stack={stack} />
-        <Para>{bio[2]}</Para>
-      </Section>
-      <Section title="side projects" ref={projectsRef}>
-        <Para>
-          I like building things for work and fun.
-        </Para>
-        <ProjectList projects={projects} />
-      </Section>
-      
-      <Section title="work history" ref={workRef}>
-        <Para>
-          History is the study of all the world's crime.
-        </Para>
-        <WorkHistory workHistory={workHistory} />
-      </Section>
-      <Section title="contact me" ref={contactRef}>
-        <Para>
-          From time to time, I consult on large-scale fullstack Typescript codebases,{' '}
-          especially ones using Node.js and React. If you'd like to work with me, give me a shout.
-        </Para>
-        <ContactList list={contactList} />
-      </Section>
-    </Content>
+      <Content>  
+        <Section title="👋 hello there" ref={aboutRef}>
+          <Para>{bio[0]}</Para>
+          <Para>{bio[1]}</Para>
+          <CodeList stack={stack} />
+          <Para>{bio[2]}</Para>
+        </Section>
+        <Section title="side projects" ref={projectsRef}>
+          <Para>
+            I like building things for work and fun.
+          </Para>
+          <ProjectList projects={projects} />
+        </Section>
+        
+        <Section title="work history" ref={workRef}>
+          <Para>
+            History is the study of all the world's crime.
+          </Para>
+          <WorkHistory workHistory={workHistory} />
+        </Section>
+        <Section title="contact me" ref={contactRef}>
+          <Para>
+            From time to time, I consult on large-scale fullstack Typescript codebases,{' '}
+            especially ones using Node.js and React. If you'd like to work with me, give me a shout.
+          </Para>
+          <ContactList list={contactList} />
+        </Section>
+      </Content>
     </main>
   )
 }

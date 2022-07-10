@@ -10,14 +10,14 @@ import { WorkHistoryItem, WithKids } from '../../types/typeDefs'
 
 const WorkHistoryHalves = ({ height }: { height: number }) => (
   <div className="work-history__halves" style={{ height }}>
-    {['tech', 'biz'].map((a) => <div key={a}className={`work-history__half ${a}`} />)}
+    {['eng', 'mgmt'].map((a) => <div key={a}className={`work-history__half ${a}`} />)}
   </div>
 )
 
 const WorkHistoryHalfTitles = () => (
   <>
-    <p className="work-history__half-title tech">More technical &uarr;</p>
-    <p className="work-history__half-title biz">More business-focused &darr;</p>
+    <p className="work-history__half-title eng">Eng &uarr;</p>
+    <p className="work-history__half-title mgmt">Mgmt &darr;</p>
   </>
 )
 
@@ -85,12 +85,12 @@ const WorkHistoryItems = ({ workHistory, periodMap, periodWidth, height }: Items
           const style = {
             left: `${periodWidth * firstIndex}%`,
             width: `${periodWidth * periodsBetween.length}%`,
-            top: `${((score - 1) * (height / 4))}px`,
+            top: `${((score - 1) * (height / 2))}px`,
           }
 
           return (
             <div
-              className={`work-history__item ${score < 3 ? 'tech' : 'biz'}`}
+              className={`work-history__item ${score < 2 ? 'eng' : 'mgmt'}`}
               key={`${company}.${title}`}
               style={style}
               onClick={() => openModalItem(item)}
