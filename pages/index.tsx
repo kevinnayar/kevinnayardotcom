@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useRef, MutableRefObject } from 'react'
 import { NextPage, GetStaticProps } from 'next'
 import { stack, projects, workHistory, contactList } from '../lib/data'
@@ -35,24 +36,24 @@ export const getStaticProps: GetStaticProps = () => {
 
 export default function Index({ stack, projects, workHistory, contactList }: Props) {
   const bio = [
-    <span>I'm a Software Engineer and a proud father to an Australian Kelpie named Jpeg.{' '}
+    <span key="uno">I'm a Software Engineer and a proud father to an Australian Kelpie named Jpeg.{' '}
       Professionally, I've worn many hats such as Software Engineer, Technical Architect,Manager,{' '}
       and Director. At my last few gigs, I managed technical teams at companies like{' '}
-      <a href="https://www.dropbox.com/" target="_blank" >Dropbox</a>
-      {' '}and <a href="https://khoros.com/" target="_blank" >Spredfast</a> (now Khoros). </span>,
+      <a href="https://www.dropbox.com/" target="_blank" rel="noreferrer" >Dropbox</a>
+      {' '}and <a href="https://khoros.com/" target="_blank" rel="noreferrer" >Spredfast</a> (now Khoros). </span>,
 
-    <span>Currently, I'm a Senior Software Engineer working on something pretty special at a scaleup{' '}
-      called <a href="https://allstripes.com/" target="_blank" >AllStripes</a>. We're building an amazing,{' '}
+    <span key="dos">Currently, I'm a Senior Software Engineer working on something pretty special at a scaleup{' '}
+      called <a href="https://allstripes.com/" target="_blank" rel="noreferrer" >AllStripes</a>. We're building an amazing,{' '}
       modern platform to advance rare disease research. I like writing functional fullstack Typescript.{' '}
       Here is some of the tech that I'm working and playing with these days:</span>,
     
-    <span>Outside of the 9 to 5, you can catch me hosting{' '}
-      <a href="http://whiskypick.com" target="_blank" >whiskey tasting events</a>, going on a run around{' '}
+    <span key="tres">Outside of the 9 to 5, you can catch me hosting{' '}
+      <a href="http://whiskypick.com" target="_blank" rel="noreferrer" >whiskey tasting events</a>, going on a run around{' '}
       {/* @ts-ignore */}
       Lady Bird Lake in downtown Austin, Texas with my beautiful <strike>girlfriend</strike>{' '}
       {/* @ts-ignore */}
       <strike>fiancé</strike> wife, or manipulating and visualizing{' '}
-      <a href="https://data.world/kevinnayar" target="_blank" >datasets</a>.</span>,
+      <a href="https://data.world/kevinnayar" target="_blank" rel="noreferrer" >datasets</a>.</span>,
   ]
 
   const aboutRef = useRef<null | HTMLElement>(null)
