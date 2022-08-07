@@ -1,6 +1,9 @@
 import { MonthYearTuple, WorkHistoryItem } from '../types/typeDefs'
 
 export function formatDate(date: MonthYearTuple): string {
+  if (date[0] < 1 || date[0] > 31) {
+    throw new Error(`Month is out of bounds: ${date[0]}`)
+  }
   const isCurrent = new Date().getMonth() + 1 === date[0] && new Date().getFullYear() === date[1]
   if (isCurrent) return 'Current'
 

@@ -12,5 +12,7 @@ const Section = forwardRef<HTMLElement, Props>(({ title, children }, ref) => {
   )
 })
 
+Section.displayName = 'Section'
+
 export default Section
 
