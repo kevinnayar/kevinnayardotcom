@@ -1,18 +1,14 @@
-import { forwardRef } from 'react'
-import { WithKids } from '../../types/typeDefs'
+type SectionProps = {
+  type: 'about' | 'work' | 'contact';
+  title: string;
+  children?: any;
+};
 
-type Props = WithKids & { title: string }
+const Section = ({ title, type, children }: SectionProps) => (
+  <section className={`section section-${type}`}>
+    <h2>{title}</h2>
+    {children}
+  </section>
+);
 
-const Section = forwardRef<HTMLElement, Props>(({ title, children }, ref) => {
-  return (
-    <section ref={ref} className="section">
-      <h2 className="section__title gradient-text">{title}</h2>
-      <div className="section__content">{children}</div>
-    </section>
-  )
-})
-
-Section.displayName = 'Section'
-
-export default Section
-
+export default Section;

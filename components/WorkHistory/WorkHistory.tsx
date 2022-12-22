@@ -1,135 +1,140 @@
-import { useState } from 'react'
-import {
-  formatDate,
-  getKeyFromDate,
-  getDateFromKey,
-  getTimelinePeriodMap, 
-  getTimelinePeriodsBetween,
-} from '../../utils/baseUtils'
-import { WorkHistoryItem, WithKids } from '../../types/typeDefs'
+import { useState, useCallback } from 'react';
+import { WorkHistoryItem, YearMonthTuple } from '../../types/base-types';
 
-const WorkHistoryHalves = ({ height }: { height: number }) => (
-  <div className="work-history__halves" style={{ height }}>
-    {['eng', 'mgmt'].map((a) => <div key={a}className={`work-history__half ${a}`} />)}
-  </div>
-)
-
-const WorkHistoryHalfTitles = () => (
-  <>
-    <p className="work-history__half-title eng">Eng &uarr;</p>
-    <p className="work-history__half-title mgmt">Mgmt &darr;</p>
-  </>
-)
-
-type PeriodsProps = {
-  periodKeys: string[],
-  periodWidth: number,
+function getTotalMonths(dateTuple: YearMonthTuple) {
+  const [year, months] = dateTuple;
+  return (year * 12) + months;
 }
 
-const WorkHistoryPeriods = ({ periodKeys, periodWidth }: PeriodsProps) => (
-  <div className="work-history__periods">
-    {periodKeys.map((key, index) => {
-      const [month, year] = getDateFromKey(key)
-      const visibilityClass = index % 12 === 0 ? 'visible' : 'hidden'
-      return (
-        <div
-          style={{ width: `${periodWidth}%` }}
-          className={`work-history__period ${visibilityClass}`}
-          key={`${month}.${year}`}
-        >
-          <p className={`work-history__period-label ${visibilityClass}`}>
-            {year}
-          </p>
-        </div>
-      )
-    })}
-  </div>
-)
-
-type ModalProps = {
-  modalItem: WorkHistoryItem,
-  closeModalItem: () => void,
+function getMonthDiff(startTuple: YearMonthTuple, stopTuple: YearMonthTuple) {
+  const startMonths = getTotalMonths(startTuple);
+  const stopMonths = getTotalMonths(stopTuple);
+  return stopMonths - startMonths;
 }
 
-const WorkHistoryModal = ({ modalItem: { title, company, description, beginDate, endDate }, closeModalItem }: ModalProps) => (
-  <div className="work-history__modal">
-    <p className="work-history__modal-title">
-      {title},{' '}
-      <span>{company}</span>{' '}
-      <span>({formatDate(beginDate)} - {formatDate(endDate)})</span>
-    </p>
-    <p className="work-history__modal-subtitle">{description}</p>
-    <div className="work-history__modal-close" onClick={closeModalItem}>+</div>
-  </div>
-)
-
-type ItemsProps = {
-  workHistory: WorkHistoryItem[],
-  periodMap: Record<string, number>,
-  periodWidth: number,
-  height: number,
+function getStartStopYears(items: WorkHistoryItem[]): [YearMonthTuple, YearMonthTuple] {
+  const start = items[0];
+  const stop = items[items.length - 1];  
+  return [
+    [start.start[0], 0], // [startYear, 0 month]
+    [stop.stop[0] + 1, stop.stop[1]], // [stopYear + 1, stopMonth]
+  ];
 }
 
-const WorkHistoryItems = ({ workHistory, periodMap, periodWidth, height }: ItemsProps) => {
-  const [modalItem, setModalItem] = useState<null | WorkHistoryItem>(null)
-  const openModalItem = (item: WorkHistoryItem) => setModalItem(item)
-  const closeModalItem = () => setModalItem(null)
+const items: WorkHistoryItem[] = [
+  {
+    title: 'Software Engineer',
+    company: 'Kasasa',
+    start: [2009, 8],
+    stop: [2010, 8],
+    score: 1
+  },
+  {
+    title: 'Sr. Implementation Engineer',
+    company: 'Bazaarvoice',
+    start: [2010, 8],
+    stop: [2013, 9],
+    score: 2
+  },
+  {
+    title: 'Manager, Solutions Consulting',
+    company: 'Spredfast',
+    start: [2013, 9],
+    stop: [2016, 8],
+    score: 4
+  },
+  {
+    title: 'Director, Technical Solutions',
+    company: 'Spredfast',
+    start: [2016, 8],
+    stop: [2018, 4],
+    score: 3
+  },
+  {
+    company: 'Dropbox',
+    title: 'Manager, Technical Architecture',
+    start: [2018, 4],
+    stop: [2019, 3],
+    score: 3
+  },
+  {
+    title: 'Sr. Software Engineer',
+    company: 'IQVIA',
+    start: [2019, 3],
+    stop: [2022, 3],
+    score: 1
+  },
+  {
+    title: 'Sr. Software Engineer',
+    company: 'AllStripes',
+    start: [2022, 3],
+    stop: [new Date().getFullYear(), new Date().getMonth() + 1],
+    score: 1,
+  }
+];
+
+const WorkHistory = () => {
+  const [width, setWidth] = useState(860);
+  const labelsWidth = 136;
+  const chartWidth = width - labelsWidth;
+
+  const itemHeight = 36;
+  const height = itemHeight * 5;
+
+  const measuredRef = useCallback((node: HTMLDivElement) => {
+    if (node) {
+      setWidth(node.getBoundingClientRect().width);
+    }
+  }, []);
+
+  const [min, max] = getStartStopYears(items);
+  const months = getMonthDiff(min, max);
+  const monthlyIncrements = chartWidth / months;
+  const classPrefix = 'work-history';
 
   return (
-    <>
-      <div className="work-history__items">
-        {workHistory.map((item) => {
-          const { company, title, beginDate, endDate, score } = item
-          const periodsBetween = getTimelinePeriodsBetween(beginDate, endDate)
-          const firstIndex = periodMap[getKeyFromDate(periodsBetween[0])]
-          const style = {
-            left: `${periodWidth * firstIndex}%`,
-            width: `${periodWidth * periodsBetween.length}%`,
-            top: `${((score - 1) * (height / 2))}px`,
-          }
+    <div
+      ref={measuredRef}
+      className={classPrefix}
+      style={{ height, width: '100%' }}
+    >
+      <div className={`${classPrefix}__labels`} style={{ width: labelsWidth }}>
+        <p className={`${classPrefix}__label`}>Engineering ↑</p>
+        <p className={`${classPrefix}__label`}>Management ↓</p>
+      </div>
+
+      <div className={`${classPrefix}__items`} style={{ width: chartWidth }}>
+        {items.map(({ title, company, start, stop, score }, index) => {
+          const x1 = getMonthDiff(min, start) * monthlyIncrements;
+          const x2 = getMonthDiff(min, stop) * monthlyIncrements;
+          const y = (height / 5) * score;
+
+          console.log({
+            start,
+            stop,
+            x1,
+            x2,
+            min, max,
+            y,
+          });
 
           return (
             <div
-              className={`work-history__item ${score < 2 ? 'eng' : 'mgmt'}`}
-              key={`${company}.${title}`}
-              style={style}
-              onClick={() => openModalItem(item)}
-            />
-          )
+              key={`${title}.${company}`}
+              className={`${classPrefix}__item ${classPrefix}__item${index % 2 === 0 ? "-odd" : "-even"}`}
+              style={{
+                left: x1,
+                width: x2 - x1,
+                top: y,
+                height: itemHeight,
+                marginTop: -itemHeight / 2,
+              }}
+            ></div>
+          );
         })}
       </div>
-      {modalItem && (
-        <WorkHistoryModal modalItem={modalItem} closeModalItem={closeModalItem} />
-      )}
-    </>
-  )
-}
-
-const WorkHistoryTimeline = ({ children }: WithKids) => (
-  <div className="work-history__timeline">{children}</div>
-)
-
-const WorkHistory = ({ workHistory }: { workHistory: WorkHistoryItem[] }) => {
-  const periodMap = getTimelinePeriodMap(workHistory)
-  const periodKeys = Object.keys(periodMap)
-  const height = 160
-  const periodWidth = 100 / periodKeys.length
-
-  return (
-    <div className="work-history">
-      <WorkHistoryTimeline>
-        <WorkHistoryHalves height={height} />
-        <WorkHistoryPeriods periodKeys={periodKeys} periodWidth={periodWidth} /> 
-        <WorkHistoryHalfTitles />
-        <WorkHistoryItems
-          workHistory={workHistory}
-          periodMap={periodMap}
-          periodWidth={periodWidth}
-          height={height}
-        />
-      </WorkHistoryTimeline>
     </div>
-  )
-}
+  );
+};
 
-export default WorkHistory
+export default WorkHistory;
