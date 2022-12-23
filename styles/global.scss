@@ -66,7 +66,7 @@ p {
   position: absolute;
   right: 5rem;
   top: 3rem;
-  width: 56px;
+  width: 46px;
   height: 28px;
   background: var(--color-mid);
   border-radius: 14px;
@@ -84,13 +84,14 @@ p {
   &__light {
     .theme-switcher-button {
       background: var(--color-light);
+      transform: translateX(0);
     }
   }
 
   &__dark {
     .theme-switcher-button {
       background: var(--color-dark);
-      transform: translateX(28px);
+      transform: translateX(18px);
     }
   }
 }
@@ -133,14 +134,22 @@ p {
 
 [data-theme="dark"] {
   background: var(--color-dark);
+
   h1, h2 {
     color: var(--color-light);
   }
   .content {
-    background: black;
+    background: rgb(12, 12, 12);
   }
-  .contact-links a:hover {
+  .contact-links a {
+    background: var(--color-mid);
     color: var(--color-light);
+
+    &:hover {
+      background: transparent;
+      border-color: var(--color-mid);
+      color: var(--color-mid);
+    }
   }
 }
 
