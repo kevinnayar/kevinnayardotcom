@@ -1,14 +1,11 @@
-type SectionProps = {
-  type: 'about' | 'work' | 'contact';
-  title: string;
-  children?: any;
-};
+type Props = {
+  content: string
+}
 
-const Section = ({ title, type, children }: SectionProps) => (
-  <section className={`section section-${type}`}>
-    <h2>{title}</h2>
-    {children}
-  </section>
-);
+const Section = ({ content }: Props) => {
+  return (
+    <div className="section" dangerouslySetInnerHTML={{ __html: content }} />
+  );
+};
 
 export default Section;
