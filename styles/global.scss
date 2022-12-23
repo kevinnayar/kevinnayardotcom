@@ -136,8 +136,8 @@ p {
 [data-theme="dark"] {
   background-color: var(--color-dark);
   background-image:
-      linear-gradient(to right, rgb(32, 32, 32) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(32, 32, 32) 1px, transparent 1px);
+      linear-gradient(to right, rgb(12, 12, 12) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(12, 12, 12) 1px, transparent 1px);
 
   h1, h2 {
     color: var(--color-light);
