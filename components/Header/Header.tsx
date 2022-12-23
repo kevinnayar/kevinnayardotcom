@@ -1,7 +1,10 @@
+import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
+
 const Header = () => (
   <header className="header">
     <h1>Kevin Nayar</h1>
-    <p>Senior Software Engineer</p>
+    <p>Software Engineer</p>
+    <ThemeSwitcher />
   </header>
 );
 
