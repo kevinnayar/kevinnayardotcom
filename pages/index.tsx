@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { NextPage } from 'next';
 import Layout from '../components/Layout/Layout';
+import SvgEffect from '../components/SvgEffect/SvgEffect';
 import Header from '../components/Header/Header';
 import Content from '../components/Content/Content';
 import Section from '../components/Section/Section';
 import { getContent, ContentItem } from '../lib/api';
+
 
 type Props = {
   allContent: Record<string, ContentItem>,
@@ -20,6 +22,7 @@ export default function Index({ allContent }: Props) {
 
   return (
     <main>
+      <SvgEffect />
       <Header />
       <Content>
         <Section content={allContent.about.contentHtml} />

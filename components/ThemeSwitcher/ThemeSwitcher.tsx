@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 
 type ThemeType = 'dark' | 'light';
 
+const THEME_KEY = '__kaynay_theme__';
+
 function useTheme(key: string, fallback: ThemeType = 'light') {
   const [theme, setTheme] = useState<null | ThemeType>();
 
@@ -30,7 +32,7 @@ function useTheme(key: string, fallback: ThemeType = 'light') {
 }
 
 const ThemeSwitcher = () => {
-  const { theme, toggle } = useTheme('__kaynay_theme__');
+  const { theme, toggle } = useTheme(THEME_KEY);
 
   return (
     <div className={`theme-switcher theme-switcher__${theme}`} onClick={toggle}>
