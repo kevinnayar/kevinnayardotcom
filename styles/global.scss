@@ -109,29 +109,38 @@ p {
   max-width: 800px;
   margin: 0 0 4rem;
 
-  a {
+  ul {
+    margin: 1rem 0;
     display: flex;
-    padding: 0.625rem 1.625rem;
-    margin-right: 1rem;
-    background: var(--color-dark);
-    border: 3px solid transparent;
-    color: var(--color-light);
-    font-weight: bold;
-    transition: all .2s ease-in;
-    display: inline;
-    font-size: 1rem;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
 
-    &:hover {
-      background: transparent;
-      color: var(--color-dark);
-      border-color: var(--color-dark);
+    li {
+      display: flex;
+      list-style: none;
+    }
+    
+    a {
+      display: flex;
+      padding: 0.625rem 1.625rem;
+      margin-right: 1rem;
+      background: var(--color-dark);
+      border: 2px solid transparent;
+      color: var(--color-light);
+      font-weight: bold;
+      transition: all .2s ease-in;
+      font-size: 1rem;
+
+      &:hover {
+        background: transparent;
+        color: var(--color-dark);
+        border-color: var(--color-dark);
+      }
     }
   }
 }
 
-.strike-through {
-  text-decoration: line-through;
-}
 
 [data-theme="dark"] {
   background-color: var(--color-dark);
@@ -145,7 +154,7 @@ p {
   .content {
     background: rgb(12, 12, 12);
   }
-  .section a {
+  .section ul a {
     background: var(--color-mid);
     color: var(--color-light);
 
@@ -193,15 +202,14 @@ p {
   h2 {
     font-size: 2.375rem;
   }
-  .section {
-    max-width: 100%;
-    margin: 0 auto 4rem;
-  }
   .content {
     padding: 3rem 3rem 10rem;
   }
-  .contact-links {
-    a {
+  .section {
+    max-width: 100%;
+    margin: 0 auto 4rem;
+
+    ul a {
       padding: 0.625rem 0.75rem;
       margin-right: 1rem;
     }
