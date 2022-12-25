@@ -3,7 +3,7 @@ import { WithKids } from '../../types/base-types';
 
 const Layout = ({ children }: WithKids) => {
   const title = 'Kevin Nayar';
-  const desc = 'Personal portfolio site for Kevin Nayar';
+  const desc = 'Personal site for Kevin Nayar';
   const src = '../public/profile.png';
 
   return (

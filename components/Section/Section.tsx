@@ -2,10 +2,11 @@ type Props = {
   content: string
 }
 
-const Section = ({ content }: Props) => {
-  return (
-    <div className="section" dangerouslySetInnerHTML={{ __html: content }} />
-  );
-};
+const Section = ({ content }: Props) => (
+  <div
+    className="section"
+    dangerouslySetInnerHTML={{ __html: content }}
+  />
+);
 
 export default Section;

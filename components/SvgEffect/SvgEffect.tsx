@@ -1,6 +1,30 @@
 import { useState, useEffect } from 'react';
 
-type Triangle = [[number, number], [number, number], [number, number]];
+type Triangle = [
+  [number, number],
+  [number, number],
+  [number, number],
+];
+
+type Color = {
+  r: number,
+  g: number,
+  b: number,
+};
+
+type TriangleConfig = {
+  points: string;
+  colorAlpha: string;
+};
+
+type TrianglesOpts = {
+  containerHeight: number,
+  numIterations: number;
+  numTriangles: number;
+  minSize: number;
+  maxSize: number;
+  color: Color,
+};
 
 function getRandomNumberInRange(lower: number, upper: number): number {
   return Math.round(Math.random() * (upper - lower) + lower);
@@ -14,30 +38,16 @@ function convertTriangleToPoints(triangle: Triangle): string {
   return points.join(' ');
 }
 
-type TriangleConfig = {
-  points: string;
-  colorAlpha: string;
-};
-
-type Color = {
-  r: number,
-  g: number,
-  b: number,
-};
-
 function generateNextTriangle(
   start: [number, number],
-  minSize: number,
-  maxSize: number,
-  height: number,
-  color: Color,
+  opts: TrianglesOpts,
 ): TriangleConfig {
+  const { color, containerHeight, minSize, maxSize } = opts;
   const [x1, y1] = start;
   const { r, g, b } = color;
 
-  // const gap = maxSize - minSize;
   let isUp = Math.random() < 0.5;
-  if (y1 > height) isUp = true;
+  if (y1 > containerHeight) isUp = true;
   if (y1 < 0) isUp = false;
 
   const x2 = x1 + getRandomNumberInRange(minSize, maxSize);
@@ -56,10 +66,8 @@ function generateNextTriangle(
     [x3, y3]
   ];
   const points = convertTriangleToPoints(triangle);
-  const lowAlpha = Math.random() > 0.5;
-  const colorAlpha = lowAlpha
-    ? `rgba(${r}, ${g}, ${b}, 0.1)`
-    : `rgba(${r}, ${g}, ${b}, 0.3)`;
+  const a = Math.random() * 0.3;
+  const colorAlpha = `rgba(${r}, ${g}, ${b}, ${a})`;
 
   return {
     points,
@@ -67,33 +75,33 @@ function generateNextTriangle(
   };
 }
 
-export function generateNNextTriangles(
-  n: number,
+function generateNNextTriangles(
   start: [number, number],
-  minSize: number,
-  maxSize: number,
-  height: number,
-  color: Color,
+  opts: TrianglesOpts,
 ): Array<TriangleConfig> {
   const triangles: Array<TriangleConfig> = [];
-  let recurseStart = start;
+  let nextStart = start;
 
-  for (let i = 0; i < n; i += 1) {
+  for (let i = 0; i < opts.numTriangles; i += 1) {
     const triangle = generateNextTriangle(
-      recurseStart,
-      minSize,
-      maxSize,
-      height,
-      color,
+      nextStart,
+      opts,
     );
     const { points } = triangle;
-    const recurseStartList = points
+    const nextStartList = points
       .split(' ')
       .map((p) => parseInt(p.replace(',', '').trim(), 10));
-    recurseStart =
-      recurseStartList[2] > recurseStartList[4]
-        ? [recurseStartList[2], recurseStartList[3]]
-        : [recurseStartList[4], recurseStartList[5]];
+    
+    /*
+      [00, 01, 02, 03, 04, 05]
+      [x1, y1, x2, y3, x3, y3]
+               ??      ??
+      find out which right point is larger - x2 or x3?
+      use that [x, y] tuple as next starting point
+    */
+    nextStart = nextStartList[2] > nextStartList[4]
+      ? [nextStartList[2], nextStartList[3]]
+      : [nextStartList[4], nextStartList[5]];
 
     triangles.push(triangle);
   }
@@ -101,65 +109,52 @@ export function generateNNextTriangles(
   return triangles;
 }
 
-type PolygonProps = {
-  points: string;
-  fill?: string;
-  stroke?: string;
-};
-
-const Polygon = ({ points, fill, stroke }: PolygonProps) => {
-  return (
-    <polygon
-      points={points}
-      fill={fill || 'transparent'}
-      stroke={stroke || 'transparent'}
-    />
-  );
-};
-
-const SvgEffect = () => {
-  const width = 2240;
-  const height = 600;
-  const color: Color = { r: 116, g: 116, b: 116 };
-
-  const trianglesOpts = {
-    numIterations: 10,
-    numTriangles: 120,
-    minSize: height / 5,
-    maxSize: height / 5 / 5
-  };
-
-  const triangleYStarts = Array.from(Array(trianglesOpts.numIterations)).map(
-    (_, i) => height * (i / trianglesOpts.numIterations)
-  );
-
-  const initTrianglesList = triangleYStarts.map((yStart) => {
-    return generateNNextTriangles(
-      trianglesOpts.numTriangles,
-      [0, yStart],
-      trianglesOpts.minSize,
-      trianglesOpts.maxSize,
-      height,
-      color,
-    );
+function generateTrianglesList(opts: TrianglesOpts): TriangleConfig[][] {
+  const triangleYStarts = Array.from(Array(opts.numIterations)).map((_, i) => {
+    return opts.containerHeight * (i / opts.numIterations);
   });
 
-  const [trianglesList, setTrianglesList] = useState(initTrianglesList);
+  const trianglesList = triangleYStarts.map((yStart) => generateNNextTriangles(
+    [0, yStart],
+    opts,
+  ));
+  
+  return trianglesList;
+}
+
+type PolygonProps = {
+  points: string;
+  stroke: string;
+};
+
+const Polygon = ({ points, stroke }: PolygonProps) => (
+  <polygon
+    points={points}
+    stroke={stroke}
+    fill="transparent"
+  />
+);
+
+const SvgEffect = () => {
+  const opts: TrianglesOpts = {
+    containerHeight: 600,
+    numIterations: 20,
+    numTriangles: 60,
+    minSize: 30,
+    maxSize: 180,
+    color: {
+      r: 116,
+      g: 116,
+      b: 116,
+    },
+  };
+
+  const [trianglesList, setTrianglesList] = useState(generateTrianglesList(opts));
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const newTrianglesList = triangleYStarts.map((yStart) => {
-        return generateNNextTriangles(
-          trianglesOpts.numTriangles,
-          [0, yStart],
-          trianglesOpts.minSize,
-          trianglesOpts.maxSize,
-          height,
-          color,
-        );
-      });
-      setTrianglesList(newTrianglesList);
-    }, 7500);
+      setTrianglesList(generateTrianglesList(opts));
+    }, 8000);
 
     return () => {
       clearInterval(interval);
@@ -170,8 +165,7 @@ const SvgEffect = () => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className="svg"
-      width={width}
-      height={height}
+      height={opts.containerHeight}
     >
       {trianglesList.map((triangles, index) => (
         <g className="g" key={index}>
