@@ -50,9 +50,32 @@ function generateNextTriangle(
   if (y1 > containerHeight) isUp = true;
   if (y1 < 0) isUp = false;
 
+  /* 
+
+  for x2 and x3, based on x1:
+  --------------
+           |                     |
+  <--x1---min-------------------max-->
+           |<-------range------->|
+
+  */
   const x2 = x1 + getRandomNumberInRange(minSize, maxSize);
   const x3 = x1 + getRandomNumberInRange(minSize, maxSize);
 
+  /*
+
+  for y2 and y3, based on y1:
+  --------------
+
+       | * y1 (isUp === true)    max-| ▲
+   min-| ▲   direction-▼             | |
+       | |                           | | <-range
+       | | <-range                   | |
+       | |                       min-| ▼   direction-▲
+   max-| ▼                           | * y1 (isUp === false)
+       |_____________________        |_____________________
+
+  */
   const y2 = isUp
     ? y1 - getRandomNumberInRange(minSize, maxSize)
     : y1 + getRandomNumberInRange(minSize, maxSize);
@@ -87,8 +110,7 @@ function generateNNextTriangles(
       nextStart,
       opts,
     );
-    const { points } = triangle;
-    const nextStartList = points
+    const nextStartList = triangle.points
       .split(' ')
       .map((p) => parseInt(p.replace(',', '').trim(), 10));
     
