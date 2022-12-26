@@ -51,9 +51,9 @@ function generateNextTriangle(
   if (y1 < 0) isUp = false;
 
   /* 
-
-  for x2 and x3, based on x1:
-  --------------
+  ---------------------------------
+  |  for x2 and x3 (based on x1)  |
+  ---------------------------------
            |                     |
   <--x1---min-------------------max-->
            |<-------range------->|
@@ -63,9 +63,9 @@ function generateNextTriangle(
   const x3 = x1 + getRandomNumberInRange(minSize, maxSize);
 
   /*
-
-  for y2 and y3, based on y1:
-  --------------
+  ---------------------------------
+  |  for y2 and y3 (based on y1)  |
+  ---------------------------------
 
        | * y1 (isUp === true)    max-| ▲
    min-| ▲   direction-▼             | |
