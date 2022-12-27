@@ -1,11 +1,11 @@
 type Props = {
-  content: string
+  html: string
 }
 
-const Section = ({ content }: Props) => (
+const Section = ({ html }: Props) => (
   <div
     className="section"
-    dangerouslySetInnerHTML={{ __html: content }}
+    dangerouslySetInnerHTML={{ __html: html }}
   />
 );
 

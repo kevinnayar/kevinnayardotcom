@@ -24,14 +24,22 @@ export default function Index({ allContent }: Props) {
     }
   }, []);
 
+  const htmlAbout = allContent?.about.contentHtml ?? '';
+  const htmlContact = allContent?.contact.contentHtml ?? '';
 
   return (
     <main>
-      <SvgEffect />
+      <SvgEffect
+        canvasHeight={600}
+        numIterations={20}
+        numTriangles={128}
+        minSize={30}
+        maxSize={180}
+      />
       <Header />
       <Content>
-        <Section content={allContent.about.contentHtml} />
-        <Section content={allContent.contact.contentHtml} />
+        <Section html={htmlAbout} />
+        <Section html={htmlContact} />
       </Content>
     </main>
   );
