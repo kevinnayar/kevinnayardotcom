@@ -33,7 +33,7 @@ function getRandomColor(): Color {
   };
 }
 
-function convertTriangleToPoints(triangle: Triangle) {
+function convertTriangleToPointsPath(triangle: Triangle) {
   const points = [];
   for (const [x, y] of triangle) {
     points.push(`${x}, ${y}`);
@@ -82,14 +82,14 @@ function generateNextTriangle(start: Point, opts: TriangleOpts): TriangleConfig 
     ? y1 - getRandomIntBetween(minSize, maxSize)
     : y1 + getRandomIntBetween(minSize, maxSize);
 
-  const triangle: Triangle = [
+  const points = convertTriangleToPointsPath([
     [x1, y1],
     [x2, y2],
     [x3, y3]
-  ];
-  const points = convertTriangleToPoints(triangle);
-  const a = Math.random() * 0.2;
+  ]);
+  
   const { r, g, b } = getRandomColor();
+  const a = Math.random() * 0.2;
   const color = `rgba(${r}, ${g}, ${b}, ${a})`;
 
   return {
