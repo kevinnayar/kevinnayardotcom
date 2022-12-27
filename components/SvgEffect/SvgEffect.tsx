@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { PolygonProps, SvgEffectProps, generateTrianglesList } from './svg-effect-utils';
+import { TriangleOpts, generateTrianglesList } from './svg-effect-utils';
 
-const Polygon = ({ points, stroke }: PolygonProps) => (
+const Polygon = ({ points, stroke }: { points: string, stroke: string }) => (
   <polygon
     points={points}
     stroke={stroke}
@@ -9,7 +9,7 @@ const Polygon = ({ points, stroke }: PolygonProps) => (
   />
 );
 
-const SvgEffect = (props: SvgEffectProps) => {
+const SvgEffect = (props: TriangleOpts) => {
   const [trianglesList, setTrianglesList] = useState(generateTrianglesList(props));
 
   useEffect(() => {

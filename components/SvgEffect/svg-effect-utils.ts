@@ -13,12 +13,7 @@ type TriangleConfig = {
   color: string;
 };
 
-export type PolygonProps = {
-  points: string;
-  stroke: string;
-};
-
-export type SvgEffectProps = {
+export type TriangleOpts = {
   canvasHeight: number,
   numIterations: number;
   numTriangles: number;
@@ -46,7 +41,7 @@ function convertTriangleToPoints(triangle: Triangle) {
   return points.join(' ');
 }
 
-function generateNextTriangle(start: Point, opts: SvgEffectProps): TriangleConfig {
+function generateNextTriangle(start: Point, opts: TriangleOpts): TriangleConfig {
   const { canvasHeight, minSize, maxSize } = opts;
   const [x1, y1] = start;
 
@@ -103,7 +98,7 @@ function generateNextTriangle(start: Point, opts: SvgEffectProps): TriangleConfi
   };
 }
 
-function generateNNextTriangles(start: Point, opts: SvgEffectProps): TriangleConfig[] {
+function generateNNextTriangles(start: Point, opts: TriangleOpts): TriangleConfig[] {
   const triangles: Array<TriangleConfig> = [];
   let nextStart = start;
 
@@ -133,15 +128,17 @@ function generateNNextTriangles(start: Point, opts: SvgEffectProps): TriangleCon
   return triangles;
 }
 
-export function generateTrianglesList(opts: SvgEffectProps): Array<TriangleConfig[]> {
-  const triangleYStarts = Array.from(Array(opts.numIterations)).map((_, i) => {
-    return opts.canvasHeight * (i / opts.numIterations);
-  });
+export function generateTrianglesList(opts: TriangleOpts): Array<TriangleConfig[]> {
+  const trianglesList: Array<TriangleConfig[]> = [];
 
-  const trianglesList = triangleYStarts.map((yStart) => generateNNextTriangles(
-    [0, yStart],
-    opts,
-  ));
+  for (let i = 0; i < opts.numIterations; i += 1) {
+    const x1 = 0;
+    const y1 = opts.canvasHeight * (i / opts.numIterations);
+    const triangles = generateNNextTriangles([x1, y1], opts);
+    trianglesList.push(triangles);
+  }
   
   return trianglesList;
 }
+
+

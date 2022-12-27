@@ -112,6 +112,11 @@ p {
   background: var(--color-mid);
   border-radius: 14px;
   cursor: pointer;
+  transition: all .2s ease-in;
+  
+  &:hover {
+    opacity: 0.8;
+  }
 
   &-button {
     width: 20px;
@@ -134,6 +139,24 @@ p {
       background: var(--color-dark);
       transform: translateX(18px);
     }
+  }
+}
+
+.link-to-code {
+  position: absolute;
+  right: 5rem;
+  bottom: 3rem;
+  background: var(--color-mid);
+  border-radius: 1rem;
+  margin: 1rem;
+  color: var(--color-light);
+  padding: 0.5rem 0.75rem;
+  font-size: .75rem;
+  font-weight: bold;
+  transition: all .2s ease-in;
+
+  &:hover {
+    opacity: 0.8;
   }
 }
 
@@ -190,6 +213,9 @@ p {
   h1, h2 {
     color: var(--color-light);
   }
+  .link-to-code {
+    color: var(--color-dark);
+  }
   .content {
     background: rgb(12, 12, 12);
   }
@@ -214,6 +240,9 @@ p {
   }
   p {
     font-size: 1.125rem;
+  }
+  .link-to-code {
+    display: none;
   }
   .content {
     padding: 3rem 5rem 10rem;
