@@ -53,9 +53,9 @@ function createNextTriangle(start: Point, opts: TriangleOpts): TriangleConfig {
   ---------------------------------
   |  for x2 and x3 (based on x1)  |
   ---------------------------------
-           |                     |
-  <--x1---min-------------------max-->
-           |<-------range------->|
+         |                     |
+  <-*---min-------------------max-->
+    x1   |<-------range------->|
 
   */
   const x2 = x1 + getRandomIntBetween(minSize, maxSize);
@@ -72,7 +72,7 @@ function createNextTriangle(start: Point, opts: TriangleOpts): TriangleConfig {
        | | <-range                   | |
        | |                       min-| ▼   direction-▲
    max-| ▼                           | * y1 (isUp === false)
-       |_____________________        |_____________________
+       |______________________       |______________________
 
   */
   const y2 = isUp
