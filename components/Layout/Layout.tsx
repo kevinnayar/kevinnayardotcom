@@ -1,5 +1,8 @@
 import Head from 'next/head';
-import { WithKids } from '../../types/base-types';
+
+type WithKids = {
+  children?: any
+};
 
 const Layout = ({ children }: WithKids) => {
   const title = 'Kevin Nayar';

@@ -4,7 +4,7 @@ type ThemeType = 'dark' | 'light';
 
 const THEME_KEY = '__kaynay_theme__';
 
-function useTheme(key: string, fallback: ThemeType = 'light') {
+function useTheme(key: string, fallback: ThemeType = 'dark') {
   const [theme, setTheme] = useState<null | ThemeType>();
 
   const set = (newTheme: ThemeType) => {

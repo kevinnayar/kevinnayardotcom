@@ -11,7 +11,7 @@ const Header = () => (
       target="_blank"
       href="https://github.com/kevinnayar/kevinnayardotcom/tree/main/components/SvgEffect"
     >
-      Code for this background effect &rarr;
+      How did I make this background? &rarr;
     </Link>
   </header>
 );

@@ -27,9 +27,9 @@ function getRandomIntBetween(lower: number, upper: number) {
 
 function getRandomColor(): Color {
   return {
-    r: getRandomIntBetween(55, 200),
-    g: getRandomIntBetween(55, 200),
-    b: getRandomIntBetween(55, 200),
+    r: getRandomIntBetween(55, 175),
+    g: getRandomIntBetween(55, 175),
+    b: getRandomIntBetween(55, 175),
   };
 }
 
@@ -41,7 +41,7 @@ function convertTriangleToPointsPath(triangle: Triangle) {
   return points.join(' ');
 }
 
-function generateNextTriangle(start: Point, opts: TriangleOpts): TriangleConfig {
+function createNextTriangle(start: Point, opts: TriangleOpts): TriangleConfig {
   const { canvasHeight, minSize, maxSize } = opts;
   const [x1, y1] = start;
 
@@ -89,7 +89,7 @@ function generateNextTriangle(start: Point, opts: TriangleOpts): TriangleConfig 
   ]);
   
   const { r, g, b } = getRandomColor();
-  const a = Math.random() * 0.2;
+  const a = Math.random() * 0.3;
   const color = `rgba(${r}, ${g}, ${b}, ${a})`;
 
   return {
@@ -98,12 +98,12 @@ function generateNextTriangle(start: Point, opts: TriangleOpts): TriangleConfig 
   };
 }
 
-function generateNNextTriangles(start: Point, opts: TriangleOpts): TriangleConfig[] {
+function createTrianglesList(start: Point, opts: TriangleOpts): TriangleConfig[] {
   const triangles: Array<TriangleConfig> = [];
   let nextStart = start;
 
   for (let i = 0; i < opts.numTriangles; i += 1) {
-    const triangle = generateNextTriangle(
+    const triangle = createNextTriangle(
       nextStart,
       opts,
     );
@@ -128,17 +128,17 @@ function generateNNextTriangles(start: Point, opts: TriangleOpts): TriangleConfi
   return triangles;
 }
 
-export function generateTrianglesList(opts: TriangleOpts): Array<TriangleConfig[]> {
-  const trianglesList: Array<TriangleConfig[]> = [];
+export function createTrianglesListCollection(opts: TriangleOpts): Array<TriangleConfig[]> {
+  const trianglesListColl: Array<TriangleConfig[]> = [];
 
   for (let i = 0; i < opts.numIterations; i += 1) {
     const x1 = 0;
     const y1 = opts.canvasHeight * (i / opts.numIterations);
-    const triangles = generateNNextTriangles([x1, y1], opts);
-    trianglesList.push(triangles);
+    const trianglesList = createTrianglesList([x1, y1], opts);
+    trianglesListColl.push(trianglesList);
   }
   
-  return trianglesList;
+  return trianglesListColl;
 }
 
 

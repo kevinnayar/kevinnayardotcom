@@ -12,8 +12,8 @@ function getContentSlugs() {
 
 export type ContentItem = {
   title: string,
-  contentMd: string;
-  contentHtml: string;
+  markdown: string;
+  html: string;
 };
 
 async function markdownToHtml(markdown: string) {
@@ -26,13 +26,13 @@ async function getContentBySlug(slug: string): Promise<ContentItem> {
   const fullPath = join(contentDir, `${title}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
-  const { content: contentMd } = matter(fileContents);
-  const contentHtml = await markdownToHtml(contentMd);
+  const { content: markdown } = matter(fileContents);
+  const html = await markdownToHtml(markdown);
 
   return {
     title,
-    contentMd,
-    contentHtml,
+    markdown,
+    html,
   };
 }
 

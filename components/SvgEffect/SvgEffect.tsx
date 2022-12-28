@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { TriangleOpts, generateTrianglesList } from './svg-effect-utils';
+import { TriangleOpts, createTrianglesListCollection } from './svg-effect-utils';
 
 const Polygon = ({ points, stroke }: { points: string, stroke: string }) => (
   <polygon
@@ -10,11 +10,11 @@ const Polygon = ({ points, stroke }: { points: string, stroke: string }) => (
 );
 
 const SvgEffect = (props: TriangleOpts) => {
-  const [trianglesList, setTrianglesList] = useState(generateTrianglesList(props));
+  const [trianglesList, setTrianglesList] = useState(createTrianglesListCollection(props));
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTrianglesList(generateTrianglesList(props));
+      setTrianglesList(createTrianglesListCollection(props));
     }, 8000);
 
     return () => {
