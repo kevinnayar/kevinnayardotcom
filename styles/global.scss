@@ -4,6 +4,7 @@
   --color-light: rgb(245, 245, 245);
   --color-mid: rgb(116, 116, 116);
   --color-dark: rgb(22, 22, 22);
+  --color-pop: #1095c1;
   --font-mono: "JetBrains Mono", monospace, sans-serif;
   --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -109,7 +110,7 @@ p {
   top: 3rem;
   width: 46px;
   height: 28px;
-  background: var(--color-mid);
+  background: var(--color-pop);
   border-radius: 14px;
   cursor: pointer;
   transition: all .2s ease-in;
@@ -146,11 +147,11 @@ p {
   position: absolute;
   right: 5rem;
   top: 375px;
-  background: var(--color-mid);
+  background: var(--color-pop);
   border-radius: 1rem;
   margin: 1rem;
   color: var(--color-light);
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 1.25rem;
   font-size: .75rem;
   font-weight: bold;
   transition: all .2s ease-in;
@@ -185,7 +186,8 @@ p {
       display: flex;
       padding: 0.625rem 1.625rem;
       margin-right: 1rem;
-      background: var(--color-dark);
+      background: var(--color-pop);
+      border-radius: .25rem;
       border: 2px solid transparent;
       color: var(--color-light);
       font-weight: bold;
@@ -194,8 +196,8 @@ p {
 
       &:hover {
         background: transparent;
-        color: var(--color-dark);
-        border-color: var(--color-dark);
+        color: var(--color-pop);
+        border-color: var(--color-pop);
       }
     }
   }
@@ -203,12 +205,12 @@ p {
 
 
 [data-theme="dark"] {
+  --color-light: #eee;
+  --color-mid: #aaa;
+  --color-dark: #141e26;
+  --color-darker: #11191f;
+
   background-color: var(--color-dark);
-  
-  /* grid effect */
-  // background-image:
-  //     linear-gradient(to right, rgb(12, 12, 12) 1px, transparent 1px),
-  //     linear-gradient(to bottom, rgb(12, 12, 12) 1px, transparent 1px);
 
   h1, h2 {
     color: var(--color-light);
@@ -216,18 +218,14 @@ p {
   .link-to-code {
     color: var(--color-dark);
   }
-  .content {
-    background: rgb(12, 12, 12);
-  }
   .section ul a {
-    background: var(--color-mid);
-    color: var(--color-light);
-
+    color: var(--color-dark);
     &:hover {
-      background: transparent;
-      border-color: var(--color-mid);
-      color: var(--color-mid);
+      color: var(--color-pop);
     }
+  }
+  .content {
+    background: var(--color-darker);
   }
 }
 
