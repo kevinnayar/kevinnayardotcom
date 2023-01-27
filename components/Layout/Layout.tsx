@@ -3,11 +3,7 @@ import dynamic from 'next/dynamic';
 import Header from '../Header/Header';
 import Content from '../Content/Content';
 
-type WithKids = {
-  children?: any
-};
-
-const Layout = ({ children }: WithKids) => {
+const Layout = ({ children }: { children?: any }) => {
   const title = 'Kevin Nayar';
   const desc = 'Personal site for Kevin Nayar';
   const src = '../public/profile.png';
@@ -44,7 +40,7 @@ const Layout = ({ children }: WithKids) => {
       <main>
         <SvgEffect
           canvasHeight={600}
-          numIterations={20}
+          numIterations={40}
           numTriangles={128}
           minSize={30}
           maxSize={180}

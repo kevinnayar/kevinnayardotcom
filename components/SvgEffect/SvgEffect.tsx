@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
-import { TriangleOpts, createTrianglesListCollection } from './svg-effect-utils';
+import { TriangleConfig, TriangleOpts, createTrianglesListCollection } from './svg-effect-utils';
 
-const Polygon = ({ points, stroke }: { points: string, stroke: string }) => (
+type PolygonProps = {
+  points: string,
+  stroke: string,
+};
+
+const Polygon = ({ points, stroke }: PolygonProps) => (
   <polygon
     points={points}
     stroke={stroke}
@@ -10,17 +15,21 @@ const Polygon = ({ points, stroke }: { points: string, stroke: string }) => (
 );
 
 const SvgEffect = (props: TriangleOpts) => {
-  const [trianglesList, setTrianglesList] = useState(createTrianglesListCollection(props));
+  const [list, setList] = useState<Array<TriangleConfig[]>>(createTrianglesListCollection(props));
+  const step = 300;
+  const interval = step * list.length * list.length;
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTrianglesList(createTrianglesListCollection(props));
-    }, 8000);
+    const intervalId = setInterval(() => {
+      setList(createTrianglesListCollection(props));
+      console.log('inrerval fired!');
+    }, interval);
 
     return () => {
-      clearInterval(interval);
+      clearInterval(intervalId);
     };
   });
+
 
   return (
     <svg
@@ -28,8 +37,16 @@ const SvgEffect = (props: TriangleOpts) => {
       className="svg"
       height={props.canvasHeight}
     >
-      {trianglesList.map((triangles, index) => (
-        <g className="g" key={index}>
+      {list.map((triangles, index) => (
+        <g
+          key={index}
+          style={{
+            animationDuration: `${step * list.length}ms`,
+            animationDelay: `${step * index}ms`,
+            animationTimingFunction: 'ease',
+            animationIterationCount: 'infinite',
+          }}
+          >
           {triangles.map(({ points, color }, i) => (
             <Polygon
               key={`${color}.${points}.${i}`}
@@ -37,7 +54,7 @@ const SvgEffect = (props: TriangleOpts) => {
               stroke={color}
             />
           ))}
-        </g>
+       </g>
       ))}
     </svg>
   );

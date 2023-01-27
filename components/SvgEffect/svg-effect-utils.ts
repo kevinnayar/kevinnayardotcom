@@ -8,7 +8,7 @@ type Color = {
   b: number,
 };
 
-type TriangleConfig = {
+export type TriangleConfig = {
   points: string;
   color: string;
 };
@@ -137,7 +137,7 @@ export function createTrianglesListCollection(opts: TriangleOpts): Array<Triangl
     const trianglesList = createTrianglesList([x1, y1], opts);
     trianglesListColl.push(trianglesList);
   }
-  
+
   return trianglesListColl;
 }
 

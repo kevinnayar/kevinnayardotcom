@@ -8,21 +8,19 @@
   --font-mono: "JetBrains Mono", monospace, sans-serif;
   --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --anim-delay: 12s;
 }
 
-@keyframes hideShowHide {
+@keyframes fadeOut {
   0% {
     opacity: 0;
   }
-
   25% {
     opacity: 1;
   }
-
   75% {
     opacity: 1;
   }
-
   100% {
     opacity: 0;
   }
@@ -89,10 +87,9 @@ p {
   height: 600px;
   background: transparent;
 
-  polygon {
+  g {
     opacity: 0;
-    animation: hideShowHide 8s ease infinite;
-    transition: all 8s cubic-bezier(0.4, 0, 0.2, 1);
+    animation-name: fadeOut;
   }
 }
 
@@ -207,7 +204,6 @@ p {
     }
   }
 }
-
 
 [data-theme="dark"] {
   --color-light: #eee;
