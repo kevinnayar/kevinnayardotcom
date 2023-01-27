@@ -1,4 +1,7 @@
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
+import Header from '../Header/Header';
+import Content from '../Content/Content';
 
 type WithKids = {
   children?: any
@@ -8,6 +11,10 @@ const Layout = ({ children }: WithKids) => {
   const title = 'Kevin Nayar';
   const desc = 'Personal site for Kevin Nayar';
   const src = '../public/profile.png';
+
+  const SvgEffect = dynamic(() => import('../SvgEffect/SvgEffect'), {
+    ssr: false,
+  });
 
   return (
     <>
@@ -34,7 +41,19 @@ const Layout = ({ children }: WithKids) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {children}
+      <main>
+        <SvgEffect
+          canvasHeight={600}
+          numIterations={20}
+          numTriangles={128}
+          minSize={30}
+          maxSize={180}
+        />
+        <Header />
+        <Content>
+          {children}
+        </Content>
+      </main>
     </>
   );
 };
