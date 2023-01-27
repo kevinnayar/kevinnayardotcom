@@ -35,6 +35,14 @@ async function markdownToHtml(markdown: string) {
   return result.toString();
 }
 
+export function isFeaturedPost(metadata: ContentMetadata) {
+  const isFeatured = metadata.tags &&
+    Array.isArray(metadata.tags) &&
+    metadata.tags.length &&
+    metadata.tags.includes('featured');
+  return isFeatured;
+}
+
 async function getPostByDirAndSlug(dirPath: string, slug: string): Promise<ContentItem> {
   const fullPath = join(dirPath, slug);
   const id = slug.replace(/\.md$/, '').toLowerCase();
@@ -93,12 +101,7 @@ export async function getFeaturedBlogPosts() {
   const featured = [];
 
   for (const post of Object.values(posts)) {
-    const isFeatured = post.metadata.tags &&
-      Array.isArray(post.metadata.tags) &&
-      post.metadata.tags.length &&
-      post.metadata.tags.includes('featured');
-
-    if (isFeatured) {
+    if (isFeaturedPost(post.metadata)) {
       featured.push(post);
     }
   }
