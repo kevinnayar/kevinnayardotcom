@@ -2,9 +2,9 @@
 title: 'Contact'
 ---
 
-## Get in touch
+## Let’s chat!
 
-From time to time, I consult on large-scale fullstack Typescript codebases, especially ones using **Node.js** and **React**. If you'd like to work with me, give me a shout. I'm based out of the lovely city of Austin, Texas.
+I sometimes consult on large-scale TypeScript projects, so if that sounds like something you need help with, feel free to reach out! I’m based in Austin, Texas, and always happy to connect.
 
 - [Email](mailto:a2V2aW4ubmF5YXJAZ21haWwuY29t)
 - [Github](http://github.com/kevinnayar)
