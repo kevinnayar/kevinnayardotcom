@@ -6,9 +6,11 @@ import Section from '../components/Section/Section';
 
 const Custom404 = () => (
   <Section>
-    <h3>
+    <h1>Whoops!</h1>
+
+    <h2>
       This page doesn&apos;t exist. Go back to the <Link href="/">home page</Link>.
-    </h3>
+    </h2>
   </Section>
 );
 

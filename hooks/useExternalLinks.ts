@@ -9,7 +9,7 @@ export function useExternalLinks() {
       if (href && !href.startsWith('/')) {
         link.setAttribute('target', '_blank');
       }
-    
+
       const emailPrefix = 'mailto:';
       if (href && href.startsWith(emailPrefix)) {
         let decoded: null | string = null;
