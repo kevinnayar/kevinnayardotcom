@@ -80,6 +80,18 @@ p {
   font-size: 1.2rem;
 }
 
+h1 a, h2 a, p a {
+  &:hover {
+    background: #646cff;
+    padding: 0 3px;
+    color: #131313;
+    text-decoration: none;
+    margin: 0 -3px;
+    border-radius: 0.125rem;
+  }
+}
+
+
 code {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 400;
