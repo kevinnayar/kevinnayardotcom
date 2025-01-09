@@ -2,6 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap');
 
 :root {
+  --color-black-light: #242424;
+  --color-black-dark: #131313;
+  --color-white:rgba(255, 255, 255, 0.87);
+  --color-link: #646cff;
+
   font-family: "Bricolage Grotesque", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
@@ -9,26 +14,20 @@
   line-height: 1.6;
   margin: 0;
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background: linear-gradient(180deg, #242424 50%,  #131313 100%);
+  color: var(--color-white);
+  background: linear-gradient(180deg, var(--color-black-light) 50%, var(--color-black-dark) 100%);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-@keyframes scrollFadeIn {
+@keyframes fadeIn {
   0% {
     opacity: 0;
-    transform: translateY(60px);
-  }
-  67% {
-    opacity: 0.67;
-    transform: translateY(0);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -37,13 +36,8 @@
 }
 
 a {
-  color: #646cff;
-  text-decoration: inherit;
-
-  &:hover {
-    color: #535bf2;
-    text-decoration: underline;
-  }
+  color: var(--color-link);
+  text-decoration: none;
 }
 
 body {
@@ -60,7 +54,8 @@ body {
   margin: 0 auto;
   max-width: 64rem;
   padding: 2rem;
-  animation: scrollFadeIn 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  opacity: 0;  // Make sure initial state is invisible
+  animation: fadeIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s forwards;  // Increased delay to 1s
 }
 
 h1,
@@ -69,11 +64,11 @@ h2 {
 }
 
 h1 {
-  font-size: 2.4rem;
+  font-size: 2.6rem;
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
 }
 
 p {
@@ -82,20 +77,38 @@ p {
 
 h1 a, h2 a, p a {
   &:hover {
-    background: #646cff;
+    background: var(--color-link);
     padding: 0 3px;
-    color: #131313;
+    color: var(--color-black-dark);
     text-decoration: none;
     margin: 0 -3px;
     border-radius: 0.125rem;
   }
 }
 
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  flex-direction: row;
+  align-self: flex-start;
+  margin-bottom: 1rem;
+
+  p {
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  h1 {
+    margin: 0;
+  }
+}
 
 code {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 400;
-  background: #131313;
+  background: var(--color-black-dark);
   padding: 0.2rem 0.4rem;
   border-radius: 0.2rem;
   font-size: 1rem;
@@ -106,7 +119,7 @@ ul {
   margin-block-start: 0;
   margin-block-end: 0;
   padding-inline-start: 0;
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 4rem;
 
   li {
     display: flex;
@@ -118,12 +131,12 @@ ul {
     padding: 1rem 2rem;
     transition: all .2s ease-in;
     font-size: 0.9rem;
-    background: #131313;
+    background: var(--color-black-dark);
     justify-content: center;
     align-items: center;
 
     &:hover {
-      background: #242424;
+      background: var(--color-black-light);
       text-decoration: none;
     }
 
@@ -146,8 +159,9 @@ ul {
     padding: 10;
     width: 90%;
   }
+
   h1 {
-    font-size: 1.9rem;
+    font-size: 2rem;
   }
 
   h2 {
@@ -172,12 +186,25 @@ ul {
 }
 
 @media screen and (max-width: 480px) {
-  h1 {
-    font-size: 2rem;
+  .title {
+    justify-content: center;
+    gap: 0.125rem;
+    flex-direction: column;    
+  
+    p {
+      font-size: 3.2rem;
+      margin: 0;
+    }
+  
+    h1 {
+      margin: 0;
+      text-align: center;
+      font-size: 2rem;
+    }
   }
 
   h2 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
 
   p {
@@ -188,8 +215,14 @@ ul {
     li {
       a {
         padding: 0.75rem 0.875rem;
+        font-size: 0.7rem;
+
+        svg {
+          width: 1rem;
+        }
       }
     }
   }
 }
+
 
