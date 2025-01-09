@@ -10,7 +10,10 @@ const monoFont = JetBrains_Mono({ subsets: ['latin'] });
 export default function Index() {
   return (
     <Section className={font.className}>
-      <h1>👋 Hello there, I&apos;m Kevin.</h1>
+      <div className="title">
+        <p>👋</p>
+        <h1>Hello there, I&apos;m Kevin.</h1>
+      </div>
       <h2>
         I&apos;m a product engineer that enjoys building things for the web and am currently
         building at <a href="https://tryalclinical.com">TRYAL</a>.
