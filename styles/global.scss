@@ -49,13 +49,22 @@ body {
   justify-content: center;
 }
 
+.bezier-curves {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+}
+
 .section {
   width: 80%;
   margin: 0 auto;
   max-width: 64rem;
   padding: 2rem;
-  opacity: 0;  // Make sure initial state is invisible
-  animation: fadeIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s forwards;  // Increased delay to 1s
+  opacity: 0; 
+  animation: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s 1 forwards fadeIn; 
 }
 
 h1,
@@ -119,7 +128,7 @@ ul {
   margin-block-start: 0;
   margin-block-end: 0;
   padding-inline-start: 0;
-  margin: 1.5rem 0 4rem;
+  margin: 1.5rem 0;
 
   li {
     display: flex;
@@ -156,8 +165,8 @@ ul {
 
 @media screen and (max-width: 724px) {
   .section {
-    padding: 10;
-    width: 90%;
+    padding: 10%;
+    width: 100%;
   }
 
   h1 {
