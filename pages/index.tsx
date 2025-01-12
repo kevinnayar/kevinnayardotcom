@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { Bricolage_Grotesque, JetBrains_Mono } from 'next/font/google';
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
-import BezierCurves from '../components/BezierCurves/BezierCurves';
+// import BezierCurves from '../components/BezierCurves/BezierCurves';
 import Layout from '../components/Layout/Layout';
 import Section from '../components/Section/Section';
 
@@ -11,20 +11,21 @@ const monoFont = JetBrains_Mono({ subsets: ['latin'] });
 export default function Index() {
   return (
     <>
-      <BezierCurves />
+      {/* <BezierCurves /> */}
       <Section className={mainFont.className}>
         <div className="title">
           <p>👋</p>
           <h1>Hello there, I&apos;m Kevin.</h1>
         </div>
         <h2>
-          I&apos;m a product engineer that enjoys building things for the web and am currently
-          building at <a href="https://tryalclinical.com">TRYAL</a>.
+          I&apos;m a product engineer that enjoys building things for the web and am
+          currently building at <a href="https://tryalclinical.com">TRYAL</a>.
         </h2>
         <p>
-          Over the years, I&apos;ve worn many hats — software engineering, solutions architecture,
-          developer relations, and engineering leadership. Part of my journey has been leading
-          technical teams at places like <a href="https://dropbox.com">Dropbox</a> and{' '}
+          Over the years, I&apos;ve worn many hats — software engineering, solutions
+          architecture, developer relations, and engineering leadership. Part of my
+          journey has been leading technical teams at places like{' '}
+          <a href="https://dropbox.com">Dropbox</a> and{' '}
           <a href="https://khoros.com/">Khoros</a> (fka Spredfast).
         </p>
         <p>
@@ -35,8 +36,8 @@ export default function Index() {
         </p>
         <p>
           Outside of work, you might find me hosting a{' '}
-          <a href="https://whiskypick.com">whiskey tasting</a>, hitting the trails for a run, or
-          spending time with my wife and daughter.
+          <a href="https://whiskypick.com">whiskey tasting</a>, hitting the trails for a
+          run, or spending time with my wife and daughter.
         </p>
         <ul>
           <li className="li-1">
