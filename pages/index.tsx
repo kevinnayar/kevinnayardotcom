@@ -18,7 +18,7 @@ export default function Index() {
           <h1>Hello there, I&apos;m Kevin.</h1>
         </div>
         <h2>
-          I&apos;m a product engineer that enjoys building things for the web and am
+          A product engineer that enjoys building things for the web and am
           currently building at <a href="https://tryalclinical.com">TRYAL</a>.
         </h2>
         <p>
