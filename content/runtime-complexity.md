@@ -2,7 +2,7 @@
 
 When looking at ways to solve problems in programming, there is one simple metric that we can use as a proxy to estimate efficiency. It’s the **number of operations** relative to **the size of the input**, i.e., **runtime complexity**. 
 
-Let’s say that m:
+Let’s say that...
 - You're given an array of numbers
 - And a target value which is a number
 - I want you to find out which 2 numbers in the array equal to the target.
