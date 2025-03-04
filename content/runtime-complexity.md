@@ -161,6 +161,7 @@ function targetSum(nums: number[], target: number): [number, number] {
   return [-1, -1];
 }
 ```
+Now, we've solved this in just one loop. Using my exaggerated numbers, this solution woild be 100,000 iterations instead of 1 million - exactly, one order of magnitude faster. I hope thet illustrates how choosing the right algorithms can result in tangible efficiency gains in your programs.
 
 ### Big O Notation
 
