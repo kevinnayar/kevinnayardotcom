@@ -1,8 +1,12 @@
 # Understanding runtime complexity
 
-When looking at ways to solve problems in programming, there is one simple metric that we can as a proxy to estimate efficiency. It’s the **number of operations** relative to **the size of its input**, i.e., **runtime complexity**. 
+When looking at ways to solve problems in programming, there is one simple metric that we can use as a proxy to estimate efficiency. It’s the **number of operations** relative to **the size of the input**, i.e., **runtime complexity**. 
 
-Let’s say that you’re given an array of numbers and I want you to find out which two numbers in the array equal to a specific “target” value? Specifically, I’d like for you to return the indices of those numbers in the array. 
+Let’s say that m:
+- You're given an array of numbers
+- And a target value which is a number
+- I want you to find out which 2 numbers in the array equal to the target.
+  - Specifically, I’d like for you to return the indices of those 2 numbers in the array. 
 
 This problem is known as a variation of `targetSum`
 
@@ -90,8 +94,8 @@ One thing to keep in mind is that, in this context, we’re almost always talkin
 Let’s see if we can solve `targetSum` more efficiently. One approach is that we could: 
 
 - Iterate through the array once and store all the numbers and their corresponding indices in something like a hash map.
-    - A hash map, or a similar data structure such as an object, dictionary, record, etc. is fast to check for the existence of a value because you can do so instantly and don’t require a loop.
-- Once we have all the values stored, we iterate through the array again and in each iteration, look for the difference between target and the current value. If that difference exists in the hash map, we can return its index as well as the index of our current value.
+    - A hash map, or a similar data structure such as an object, dictionary, record, etc. has fast lookups because you can do so instantly without iteration.
+- Once we have all the values stored, we iterate through the array again. In each iteration, look for the difference between the target and current values. If that difference exists in the hash map, we can return its index as well as the index of our current value.
 
 ```tsx
 function targetSum(nums: number[], target: number): [number, number] {
