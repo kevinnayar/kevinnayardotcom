@@ -1,7 +1,6 @@
 import { NextPage } from 'next';
 import { Bricolage_Grotesque, JetBrains_Mono } from 'next/font/google';
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
-// import BezierCurves from '../components/BezierCurves/BezierCurves';
 import Layout from '../components/Layout/Layout';
 import Section from '../components/Section/Section';
 
@@ -11,10 +10,9 @@ const monoFont = JetBrains_Mono({ subsets: ['latin'] });
 export default function Index() {
   return (
     <>
-      {/* <BezierCurves /> */}
       <Section className={mainFont.className}>
         <div className="title">
-          <p>👋</p>
+          <p>👋🏾</p>
           <h1>Hello there, I&apos;m Kevin.</h1>
         </div>
         <h2>
