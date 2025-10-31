@@ -17,7 +17,7 @@ export default function Index() {
         </div>
         <h2>
           A product engineer that enjoys building things for the web and am
-          currently building at <a href="https://hubspot.com">Hubspot</a>.
+          currently building at <a href="https://hubspot.com">HubSpot</a>.
         </h2>
         <p>
           Over the years, I&apos;ve worn many hats — software engineering, solutions
